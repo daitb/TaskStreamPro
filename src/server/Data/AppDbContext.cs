@@ -22,13 +22,9 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<ProjectMember> ProjectMembers { get; set; }
 
-    public virtual DbSet<Task> Tasks { get; set; }
+    public virtual DbSet<Models.Task> Tasks { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=db.ddmcountsuuyepsxzdxl.supabase.co;Database=postgres;Username=postgres;Password=unEvE3OO7Q6ROGGY;SSL Mode=Require;Trust Server Certificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -133,7 +129,7 @@ public partial class AppDbContext : DbContext
                 .HasConstraintName("project_members_user_id_fkey");
         });
 
-        modelBuilder.Entity<Task>(entity =>
+        modelBuilder.Entity<Models.Task>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("tasks_pkey");
 
