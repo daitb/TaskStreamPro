@@ -1,4 +1,6 @@
 
+using server.Persistence;
+
 namespace server
 {
     public class Program
@@ -10,6 +12,10 @@ namespace server
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            //Add Persistence
+            builder.Services.AddPersistence(builder.Configuration);
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -25,6 +31,8 @@ namespace server
 
             app.UseHttpsRedirection();
 
+            app.UseMiddleware<ExceptionMiddleware>();
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
