@@ -17,9 +17,8 @@ public class UserRepository : IUserRepository
         return _context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
 
-    public System.Threading.Tasks.Task CreateUserAsync(User user)
+    public void CreateUser(User user)
     {
         _context.Users.Add(user);
-        return _context.SaveChangesAsync();
     }
 }
