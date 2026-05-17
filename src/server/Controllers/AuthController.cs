@@ -23,7 +23,7 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
-        var response = await _authService.RegisterAsync(request);
-        return Ok(ApiResponse<LoginResponse>.Success(response, "Registration successful"));
+        await _authService.RegisterAsync(request);
+        return Ok(ApiResponse<LoginResponse>.Success(null, "Registration successful. Please check your email to verify your account."));
     }
 }

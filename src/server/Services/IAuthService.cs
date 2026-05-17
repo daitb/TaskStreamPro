@@ -1,7 +1,7 @@
-using server.Models;
 
 public interface IAuthService
 {
-    Task<LoginResponse> RegisterAsync(RegisterRequest request);
+    Task RegisterAsync(RegisterRequest request);
     Task<LoginResponse> LoginAsync(LoginRequest request);
+    public Task<LoginResponse> RefreshTokenAsync(string refreshToken);
 }
