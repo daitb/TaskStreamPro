@@ -22,9 +22,13 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<ProjectMember> ProjectMembers { get; set; }
 
-    public virtual DbSet<Models.Task> Tasks { get; set; }
+    public virtual DbSet<TaskProject> Tasks { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+
+    public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
+
+    public virtual DbSet<EmailVerificationToken> EmailVerificationTokens { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -129,7 +133,7 @@ public partial class AppDbContext : DbContext
                 .HasConstraintName("project_members_user_id_fkey");
         });
 
-        modelBuilder.Entity<Models.Task>(entity =>
+        modelBuilder.Entity<TaskProject>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("tasks_pkey");
 

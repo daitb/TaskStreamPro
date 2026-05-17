@@ -44,6 +44,8 @@ namespace server.Persistence
 
             //Repository
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
             //Service
             services.AddScoped<IAuthService, AuthService>();
