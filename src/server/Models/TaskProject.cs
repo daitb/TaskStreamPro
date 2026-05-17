@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace server.Models;
 
-public partial class Task
+public partial class TaskProject
 {
     public int Id { get; set; }
 

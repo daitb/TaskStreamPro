@@ -17,6 +17,8 @@ public partial class User
 
     public string SystemRole { get; set; } = null!;
 
+    public bool IsVerified { get; set; } = false;
+
     public DateTime CreatedAt { get; set; }
 
     public DateTime UpdatedAt { get; set; }
@@ -27,5 +29,5 @@ public partial class User
 
     public virtual ICollection<Project> Projects { get; set; } = new List<Project>();
 
-    public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
+    public virtual ICollection<TaskProject> Tasks { get; set; } = new List<TaskProject>();
 }
